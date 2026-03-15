@@ -1,1 +1,2 @@
 manual commit test
+new line for text rebase
