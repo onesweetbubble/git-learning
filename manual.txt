@@ -1,3 +1,4 @@
 manual commit test
 new line for text rebase
 added from GitHub
+added 2 line from GitHub (test2)
