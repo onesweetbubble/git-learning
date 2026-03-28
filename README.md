@@ -22,5 +22,11 @@ The goal of this project is to build strong practical skills in terminal workflo
 - README writing
 - project structure design
 
+## How to use this repository
+
+- review the README to understand the project structure
+- explore folders step by step
+- check commit history to see how the project evolved
+
 ## Status
 This project is in progress and used as part of step-by-step engineering training.
