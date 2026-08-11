@@ -1,27 +1,27 @@
--- Day 29. Связь many-to-many: orders и products
+-- Day 29. РЎРІСЏР·СЊ many-to-many: orders Рё products
 
--- 1. Количество товарных позиций в каждом заказе
+-- 1. РљРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂРЅС‹С… РїРѕР·РёС†РёР№ РІ РєР°Р¶РґРѕРј Р·Р°РєР°Р·Рµ
 SELECT
     order_id,
     COUNT(product_id) AS position_count
 FROM order_items
 GROUP BY order_id;
 
--- 2. Количество уникальных товаров в каждом заказе
+-- 2. РљРѕР»РёС‡РµСЃС‚РІРѕ СѓРЅРёРєР°Р»СЊРЅС‹С… С‚РѕРІР°СЂРѕРІ РІ РєР°Р¶РґРѕРј Р·Р°РєР°Р·Рµ
 SELECT
     order_id,
     COUNT(DISTINCT product_id) AS unique_products
 FROM order_items
 GROUP BY order_id;
 
--- 3. Количество уникальных заказов для каждого товара
+-- 3. РљРѕР»РёС‡РµСЃС‚РІРѕ СѓРЅРёРєР°Р»СЊРЅС‹С… Р·Р°РєР°Р·РѕРІ РґР»СЏ РєР°Р¶РґРѕРіРѕ С‚РѕРІР°СЂР°
 SELECT
     product_id,
     COUNT(DISTINCT order_id) AS unique_orders
 FROM order_items
 GROUP BY product_id;
 
--- 4. Поиск повторяющихся пар order_id + product_id
+-- 4. РџРѕРёСЃРє РїРѕРІС‚РѕСЂСЏСЋС‰РёС…СЃСЏ РїР°СЂ order_id + product_id
 SELECT
     order_id,
     product_id,
@@ -32,8 +32,8 @@ GROUP BY
     product_id
 HAVING COUNT(*) > 1;
 
--- 5. Ограничение принято по бизнес-правилу:
--- один товар может находиться в одном заказе только в одной строке
+-- 5. РћРіСЂР°РЅРёС‡РµРЅРёРµ РїСЂРёРЅСЏС‚Рѕ РїРѕ Р±РёР·РЅРµСЃ-РїСЂР°РІРёР»Сѓ:
+-- РѕРґРёРЅ С‚РѕРІР°СЂ РјРѕР¶РµС‚ РЅР°С…РѕРґРёС‚СЊСЃСЏ РІ РѕРґРЅРѕРј Р·Р°РєР°Р·Рµ С‚РѕР»СЊРєРѕ РІ РѕРґРЅРѕР№ СЃС‚СЂРѕРєРµ
 ALTER TABLE order_items
 ADD CONSTRAINT unique_order_product
 UNIQUE (order_id, product_id);
